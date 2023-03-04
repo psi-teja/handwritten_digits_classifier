@@ -1,6 +1,7 @@
 # Handwritten Digits Classifier
 
-<img src="3.jpg" width="35%" align="right" title="Employee Data title">
+
+<img src="3.jpg" width="35%" align="right" title="Handwritten Digit 3">
 
 
 # Steps to use:
