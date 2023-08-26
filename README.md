@@ -8,7 +8,7 @@
 
 - Run draw_digit.py 
 - Draw a digit on 'draw a digit here' dialogue box
-- Prediction appears in the terminal
+- Prediction appears in the terminal and you can audio prompt of the digit.
 - Press 'r' to retry!
 
   
