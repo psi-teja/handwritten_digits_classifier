@@ -3,6 +3,8 @@
 
 <img src="3.jpg" width="35%" align="right" title="Handwritten Digit 3">
 
+No framework like TensorFlow or PyTorch is used. Numpy is used to compute forward pass and backward pass
+
 
 # Steps to use:
 
