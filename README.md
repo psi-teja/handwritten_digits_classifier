@@ -3,14 +3,16 @@
 
 <img src="3.jpg" width="35%" align="right" title="Handwritten Digit 3">
 
-No framework like TensorFlow or PyTorch is used. Numpy is used to compute forward pass and backward pass
+- Using Numpy: Numpy is used to compute forward pass and backward pass
+- Using TensorFlow: CNN architecture is used (Coming Soon!)
+- Using Pytorch: CNN architecture is used (Coming Soon!)
 
 
 # Steps to use:
 
-- Run draw_digit.py 
+- Run draw_digit.py
 - Draw a digit on 'draw a digit here' dialogue box
-- Prediction appears in the terminal and you can audio prompt of the digit.
+- Prediction appears in the terminal and you can also hear audio prompt of the digit.
 - Press 'r' to retry!
 
   
