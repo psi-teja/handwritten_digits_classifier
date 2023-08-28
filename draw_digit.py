@@ -10,7 +10,7 @@ drawing = False  # true if mouse is pressed
 pt1_x, pt1_y = None, None
 
 # mouse callback function
-def line_drawing(event, x, y):
+def line_drawing(event, x, y, flags, param):
     global pt1_x, pt1_y, drawing
 
     if event == cv2.EVENT_LBUTTONDOWN:
@@ -27,7 +27,7 @@ def line_drawing(event, x, y):
         digit = np_model.predict(img)
         filename = f'soundtrack/{str(digit[0])}.wav'
         playsound(filename)
-        print("press 'r' to retry!")
+        print(f"Predicted Digit: {digit[0]}                Press 'r' to retry!\n")
 
 
 img = np.ones((280, 280), np.uint8) * 255
