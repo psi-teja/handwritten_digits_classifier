@@ -11,12 +11,7 @@ class np_model:
         self.wout = pkl.load(open('using_np/weights/wout.pkl', 'rb'))
         self.bout = pkl.load(open('using_np/weights/bout.pkl', 'rb'))
 
-    def predict(self,img):
-        img = (255 - img) / 255
-        img = Image.fromarray(img)
-        new_img = img.resize((28, 28))
-
-        X = np.array(new_img.convert('L'))
+    def predict(self, X):
 
         X = X.reshape((1, 784))
 
@@ -30,6 +25,4 @@ class np_model:
         T = np.sum(S, axis=1, keepdims=True)
         out = S / T
 
-        max_index = np.argmax(out, axis=1)
-
-        return max_index
+        return out
