@@ -8,9 +8,9 @@ from PIL import Image
 import sys
 
 try:
-    if sys.argv[1] == "np_model":
+    if sys.argv[1] == "np":
         using_model = np_model()
-    elif sys.argv[1] == "tf_model":
+    elif sys.argv[1] == "tf":
         using_model = models.load_model('using_tf/tf_model')
 except:
     using_model = models.load_model('using_tf/tf_model')

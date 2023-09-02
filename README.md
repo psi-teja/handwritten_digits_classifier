@@ -9,8 +9,8 @@
 
 # Steps to use:
 
-- Run draw_digit.py <model>
-- where <model> can be np_model or tf_model (default = tf_model)
+- Run draw_digit.py model
+- where model can be np or  (default = tf)
 - Draw a digit on 'draw a digit here' dialogue box
 - Prediction appears in the terminal and you can also hear audio prompt of the digit.
 - Press 'r' to retry!
