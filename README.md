@@ -1,18 +1,23 @@
 # Handwritten Digits Classifier
 
-<img src="3.jpg" width="35%" align="right" title="Handwritten Digit 3">
+<img src="3.jpg" width="30%" align="right" title="Handwritten Digit 3">
 
-- Using Numpy: Numpy is used to compute forward pass and backward pass
-- Using TensorFlow: CNN architecture is used
-- Using Pytorch: CNN architecture is used (Coming Soon!)
+This project offers three different approaches to classify handwritten digits:
 
+- **Using Numpy**: Numpy is used to compute the forward and backward passes of Multi-Layered Perceptrons(MLPs) network.
+- **Using TensorFlow**: A Convolutional Neural Network (CNN) architecture is employed for classification.
+- **Using PyTorch**: (Coming Soon!) PyTorch will be used with a CNN architecture.
 
-# Steps to use:
+## How to Use:
 
-- Run draw_digit.py model
-- where model can be np or  (default = tf)
-- Draw a digit on 'draw a digit here' dialogue box
-- Prediction appears in the terminal and you can also hear audio prompt of the digit.
-- Press 'r' to retry!
+1. Run `draw_digit.py` with the chosen model:
+   - `python draw_digit.py np` for the Numpy model.
+   - `python draw_digit.py tf` for the TensorFlow model (default).
 
-  
+2. A "draw a digit here" dialogue box will appear.
+
+3. Draw a digit within the dialogue box.
+
+4. The predicted digit will be displayed in the terminal, and you'll hear an audio prompt of the digit.
+
+5. If needed, press 'r' to retry and draw another digit.

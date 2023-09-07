@@ -4,3 +4,4 @@ opencv-python==4.7.0.68
 Pillow==9.4.0
 tensorflow==2.13.0
 pygame==2.5.1
+tqdm==4.66.1
