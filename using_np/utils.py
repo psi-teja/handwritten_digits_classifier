@@ -14,7 +14,7 @@ def preprocess_data(X_train, y_train):
     X_train = (255 - X_train) / 255
     X_train[X_train > 0] = 1
 
-    Y_train = np.zeros((N, 10))
+    Y_train = np.zeros((len(y_train), 10))
     for i in range(N):
         Y_train[i][y_train[i]] = 1
 
