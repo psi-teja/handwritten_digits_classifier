@@ -3,7 +3,7 @@ import cv2
 from using_np.utils import *
 from using_np.model import np_model
 from using_tf.model import models
-from playsound import playsound
+import pygame
 from PIL import Image
 import sys
 
@@ -17,6 +17,8 @@ except:
 
 drawing = False  # true if mouse is pressed
 pt1_x, pt1_y = None, None
+
+pygame.init()
 
 
 def preprocess(img):
@@ -46,7 +48,8 @@ def line_drawing(event, x, y, flags, param):
         input = preprocess(img)
         digit = using_model.predict(input)
         filename = f'soundtrack/{str(digit.argmax())}.wav'
-        playsound(filename)
+        pygame.mixer.music.load(filename)
+        pygame.mixer.music.play()
         print(f"Predicted Digit: {digit.argmax()}\nPress 'r' to retry!\nPress 'q' to close the window.\n")
 
 
