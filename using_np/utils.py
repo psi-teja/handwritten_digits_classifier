@@ -15,7 +15,7 @@ def preprocess_data(X_train, y_train):
     X_train[X_train > 0] = 1
 
     Y_train = np.zeros((len(y_train), 10))
-    for i in range(N):
+    for i in range(len(Y_train)):
         Y_train[i][y_train[i]] = 1
 
     X_train = X_train.reshape((X_train.shape[0], -1))
