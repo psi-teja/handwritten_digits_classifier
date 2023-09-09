@@ -11,7 +11,7 @@ from utils import preprocess_data, sigmoid, softmax, d_sigmoid
 N = len(X_train)
 epochs = 1000
 batch_size = 1000
-learning_rate = 0.01
+learning_rate = 0.1
 
 # designing MLPs
 n_in = 784

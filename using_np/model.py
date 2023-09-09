@@ -24,6 +24,7 @@ class NumpyModel:
                 self.w1, self.w2, self.wo, self.b1, self.b2, self.bo = weights
         except FileNotFoundError:
             raise FileNotFoundError(f"Model weights file '{model_weights_path}' not found.")
+    
     def predict(self, X):
         """
         Predict the output of the neural network for the given input data.

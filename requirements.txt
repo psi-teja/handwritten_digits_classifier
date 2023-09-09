@@ -5,3 +5,5 @@ Pillow==9.4.0
 tensorflow==2.13.0
 pygame==2.5.1
 tqdm==4.66.1
+torch==2.0.1
+torchvision==0.15.2

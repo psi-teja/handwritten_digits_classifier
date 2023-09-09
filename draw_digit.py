@@ -27,9 +27,11 @@ def load_model_from_command_line_argument():
     if len(sys.argv) > 1:
         argument = sys.argv[1].lower()
         if argument == "np":
+            print("\nusing NumpyModel\n")
             return NumpyModel(NumpyModel_path)
         elif argument == "tf":
             try:
+                print("\nusing TFmodel\n")
                 return models.load_model(default_model_path)
             except FileNotFoundError:
                 print(f"Error: Model file '{default_model_path}' not found.")
@@ -106,11 +108,11 @@ def line_drawing(event, x, y, flags, param):
 
     elif event == cv2.EVENT_MOUSEMOVE:
         if drawing == True:
-            cv2.line(img, (pt1_x, pt1_y), (x, y), color=0, thickness=20)
+            cv2.line(img, (pt1_x, pt1_y), (x, y), color=0, thickness=25)
             pt1_x, pt1_y = x, y
     elif event == cv2.EVENT_LBUTTONUP:
         drawing = False
-        cv2.line(img, (pt1_x, pt1_y), (x, y), color=0, thickness=20)
+        cv2.line(img, (pt1_x, pt1_y), (x, y), color=0, thickness=25)
         input = preprocess_image_for_model(img)
         digit = using_model.predict(input)
         filename = f'soundtrack/{str(digit.argmax())}.wav'
