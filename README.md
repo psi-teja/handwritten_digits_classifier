@@ -6,13 +6,14 @@ This project offers three different approaches to classify handwritten digits:
 
 - **Using Numpy**: Numpy is used to compute the forward and backward passes of Multi-Layered Perceptrons(MLPs) network.
 - **Using TensorFlow**: A Convolutional Neural Network (CNN) architecture is employed for classification.
-- **Using PyTorch**: (Coming Soon!) PyTorch will be used with a CNN architecture.
+- **Using PyTorch**: PyTorch will be used with a CNN architecture.
 
 ## How to Use:
 
 1. Run `draw_digit.py` with the chosen model:
    - `python draw_digit.py np` for the Numpy model.
    - `python draw_digit.py tf` for the TensorFlow model (default).
+   - `python draw_digit.py pyt` for the pyTorch model.
 
 2. A "draw a digit here" dialogue box will appear.
 
