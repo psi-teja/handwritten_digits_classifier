@@ -1,8 +1,10 @@
 #!/usr/bin/env python3.
 import cv2
+import torch
 from using_np.utils import *
 from using_np.model import NumpyModel
 from using_tf.model import models
+from using_pyt.model import TorchModel
 import pygame
 from PIL import Image
 import sys
@@ -10,6 +12,7 @@ import sys
 # Default model path
 default_model_path = 'using_tf/tf_model'
 NumpyModel_path = 'using_np/weights/model_weights.pkl'
+TorchModel_path = 'using_pyt/mnist_model.pth'
 
 def load_model_from_command_line_argument():
     """
@@ -27,14 +30,26 @@ def load_model_from_command_line_argument():
     if len(sys.argv) > 1:
         argument = sys.argv[1].lower()
         if argument == "np":
-            print("\nusing NumpyModel\n")
-            return NumpyModel(NumpyModel_path)
+            try:
+                print("\nusing NumpyModel\n")
+                return NumpyModel(NumpyModel_path)
+            except:
+                print(f"Error: Model file '{NumpyModel_path}' not found.")
         elif argument == "tf":
             try:
                 print("\nusing TFmodel\n")
                 return models.load_model(default_model_path)
             except FileNotFoundError:
                 print(f"Error: Model file '{default_model_path}' not found.")
+        elif argument == "pyt":
+            try:
+                print("\nusing TorchModel\n")
+                model = TorchModel()
+                model.load_state_dict(torch.load(TorchModel_path))
+                model.eval()
+                return model
+            except FileNotFoundError:
+                print(f"Error: Model file '{TorchModel_path}' not found.")
     else:
         print("No command-line argument provided. Using default model.")
     
@@ -42,7 +57,7 @@ def load_model_from_command_line_argument():
     return models.load_model(default_model_path)
 
 
-using_model = load_model_from_command_line_argument()
+ocr_model = load_model_from_command_line_argument()
 
 
 def preprocess_image_for_model(input_image):
@@ -114,7 +129,7 @@ def line_drawing(event, x, y, flags, param):
         drawing = False
         cv2.line(img, (pt1_x, pt1_y), (x, y), color=0, thickness=25)
         input = preprocess_image_for_model(img)
-        digit = using_model.predict(input)
+        digit = ocr_model.predict(input)
         filename = f'soundtrack/{str(digit.argmax())}.wav'
         pygame.mixer.music.load(filename)
         pygame.mixer.music.play()
