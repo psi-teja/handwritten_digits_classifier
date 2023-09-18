@@ -18,7 +18,7 @@ learning_rate = 0.001
 batch_size = 64
 epochs = 10
 
-trainset = torchvision.datasets.MNIST(root='using_pyt',train=True, download=True, transform=transform)
+trainset = torchvision.datasets.MNIST(root='./',train=True, download=True, transform=transform)
 train_loader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True)
 
 
@@ -49,4 +49,4 @@ for epoch in range(epochs):
 print("Training finished")
 
 # Save the trained model if needed
-torch.save(model.state_dict(), "using_pyt/mnist_model.pth")
+torch.save(model.state_dict(), "pretrained_model/mnist_model.pth")

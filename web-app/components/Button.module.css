@@ -1,0 +1,23 @@
+/* Add a base class for the button */
+.button {
+    background-color: #fff; /* Initial background color (white) */
+    color: #757272; /* Initial text color (black) */
+    padding: 10px 20px;
+    margin: 5px 0; /* Adjust vertical margin as needed */
+    border-color: rgb(236, 233, 233);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+  }
+  
+  .button:hover {
+    background-color: #0056b3; 
+    color: #fff;
+  }
+  
+  .button.active {
+    background-color: #007bff; /* Background color when active */
+    color: #fff; /* Text color when active */
+  }

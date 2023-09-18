@@ -1,13 +1,17 @@
-from dataset import *
-from model import model
+from dataset import X_train, y_train
+from model import tf_model
 
-tf_model = model
+model = tf_model
 
-tf_model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-# tf_model.optimizer.lr.assign(0.005)
-tf_model.fit(X_train, y_train, epochs=10)
+# Compile the model
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
-tf_model.save('tf_model')
+# Train the model for 10 epochs
+model.fit(X_train, y_train, epochs=10)
 
-print(tf_model.predict(X_test[:1]))
+# Save the trained model
+model.save('pretrained_model')
 
+# Make a prediction on a test sample
+prediction = model.predict(X_train[:1])
+print(prediction)

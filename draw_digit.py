@@ -1,18 +1,9 @@
 #!/usr/bin/env python3.
 import cv2
-import torch
-from using_np.utils import *
-from using_np.model import NumpyModel
-from using_tf.model import models
-from using_pyt.model import TorchModel
+import numpy as np
 import pygame
-from PIL import Image
 import sys
-
-# Default model path
-default_model_path = 'using_tf/tf_model'
-NumpyModel_path = 'using_np/weights/model_weights.pkl'
-TorchModel_path = 'using_pyt/mnist_model.pth'
+from utils import *
 
 def load_model_from_command_line_argument():
     """
@@ -30,70 +21,16 @@ def load_model_from_command_line_argument():
     if len(sys.argv) > 1:
         argument = sys.argv[1].lower()
         if argument == "np":
-            try:
-                print("\nusing NumpyModel\n")
-                return NumpyModel(NumpyModel_path)
-            except:
-                print(f"Error: Model file '{NumpyModel_path}' not found.")
+            return load_model_from_model_id(1)
         elif argument == "tf":
-            try:
-                print("\nusing TFmodel\n")
-                return models.load_model(default_model_path)
-            except FileNotFoundError:
-                print(f"Error: Model file '{default_model_path}' not found.")
+            return load_model_from_model_id(2)
         elif argument == "pyt":
-            try:
-                print("\nusing TorchModel\n")
-                model = TorchModel()
-                model.load_state_dict(torch.load(TorchModel_path))
-                model.eval()
-                return model
-            except FileNotFoundError:
-                print(f"Error: Model file '{TorchModel_path}' not found.")
+            return load_model_from_model_id(3)
     else:
         print("No command-line argument provided. Using default model.")
     
     # Fallback to default model if no valid argument is provided
-    return models.load_model(default_model_path)
-
-
-ocr_model = load_model_from_command_line_argument()
-
-
-def preprocess_image_for_model(input_image):
-    """
-    Preprocesses an input image for a deep learning model.
-
-    This function takes an input image and performs the following preprocessing steps:
-    1. Normalizes pixel values to the range [0, 1].
-    2. Converts the image to grayscale.
-    3. Resizes the image to the specified dimensions (28x28).
-    4. Reshapes the image to match the input shape expected by the model (1, 28, 28, 1).
-
-    Args:
-        input_image (numpy.ndarray): The input image as a NumPy array.
-
-    Returns:
-        numpy.ndarray: The preprocessed image as a NumPy array suitable for model inference.
-
-    Example:
-        input_img = np.array(Image.open('input.jpg'))
-        preprocessed_img = preprocess_image_for_model(input_img)
-    """
-    # Normalize pixel values to the range [0, 1]
-    input_image = input_image / 255.0
-
-    # Convert the image to grayscale
-    gray_image = Image.fromarray(input_image).convert('L')
-
-    # Resize the image to the specified dimensions (28x28)
-    resized_image = gray_image.resize((28, 28))
-
-    # Reshape the image to match the input shape expected by the model (1, 28, 28, 1)
-    reshaped_image = np.array(resized_image).reshape(1, 28, 28, 1)
-
-    return reshaped_image
-
+    return load_model_from_model_id(2)
 
 drawing = False  # true if mouse is pressed
 pt1_x, pt1_y = None, None
@@ -143,6 +80,8 @@ if __name__ == "__main__":
 
     cv2.namedWindow('draw a digit here')
     cv2.setMouseCallback('draw a digit here', line_drawing)
+
+    ocr_model = load_model_from_command_line_argument()
 
     while 1:
         cv2.imshow('draw a digit here', img)

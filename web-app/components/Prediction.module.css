@@ -1,0 +1,22 @@
+/* Container styles */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .digit {
+    font-size: 100px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Make it a circle */
+    background-color: #007bff; /* Background color (adjust as needed) */
+    color: white; /* Text color (adjust as needed) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    /* Add any other styles you need for the digit here */
+  }
