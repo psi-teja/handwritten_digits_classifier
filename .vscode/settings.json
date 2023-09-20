@@ -1,9 +1,0 @@
-{
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.autopep8"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-      },
-    "python.formatting.provider": "none"
-}
