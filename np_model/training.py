@@ -15,23 +15,23 @@ initial_learning_rate = 0.001
 
 # designing MLPs
 n_in = 784
-n_hl1 = 32
-n_hl2 = 32
+n_hl1 = 128
+n_hl2 = 64
 n_out = 10
 
 # Random initialization of weights and biases
-# w1 = 2 * np.random.random((n_in, n_hl1)) - 1
-# b1 = 2 * np.random.random((1, n_hl1)) - 1
-# w2 = 2 * np.random.random((n_hl1, n_hl2)) - 1
-# b2 = 2 * np.random.random((1, n_hl2)) - 1
-# wo = 2 * np.random.random((n_hl2, n_out)) - 1
-# bo = 2 * np.random.random((1, n_out)) - 1
+w1 = 2 * np.random.random((n_in, n_hl1)) - 1
+b1 = 2 * np.random.random((1, n_hl1)) - 1
+w2 = 2 * np.random.random((n_hl1, n_hl2)) - 1
+b2 = 2 * np.random.random((1, n_hl2)) - 1
+wo = 2 * np.random.random((n_hl2, n_out)) - 1
+bo = 2 * np.random.random((1, n_out)) - 1
 
 # load pre-trained model 
-model_weights_path = "weights/model_weights.pkl"
-with open(model_weights_path, 'rb') as file:
-    weights = pkl.load(file)
-    w1, w2, wo, b1, b2, bo = weights
+# model_weights_path = "weights/model_weights.pkl"
+# with open(model_weights_path, 'rb') as file:
+#     weights = pkl.load(file)
+#     w1, w2, wo, b1, b2, bo = weights
 
 # preprocessing training data
 X_train, Y_train = preprocess_data(X_train, y_train)
@@ -75,9 +75,9 @@ for j in trange(epochs, desc="Training In Progress", unit="epochs"):
         grad_w2 = np.dot(hl1_a.transpose(), d_hl2)  
         grad_w1 = np.dot(X_batch.transpose(), d_hl1) 
 
-        grad_bo = d_out.sum(axis=0) - 2*bo
-        grad_b2 = d_hl2.sum(axis=0) - 2*b2
-        grad_b1 = d_hl1.sum(axis=0) - 2*b1
+        grad_bo = d_out.sum(axis=0) 
+        grad_b2 = d_hl2.sum(axis=0) 
+        grad_b1 = d_hl1.sum(axis=0) 
 
         wo += grad_wo * (initial_learning_rate)
         w2 += grad_w2 * (initial_learning_rate)

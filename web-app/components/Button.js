@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import styles from './Button.module.css';
+import React, { useState } from "react";
+import styles from "./Button.module.css";
 
-function Button({text, id, handleClick, isActive}) {
-
+function Button({ text, id, handleClick, isActive }) {
   return (
     <div>
       <button
-        className={`${styles.button} ${isActive ? styles.active : ''}`}
+        className={`${styles.button} ${isActive ? styles.active : ""}`}
         onClick={() => handleClick(id)}
       >
         {text}

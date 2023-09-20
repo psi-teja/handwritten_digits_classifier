@@ -12,7 +12,6 @@ NumpyModel_path = 'np_model/weights/model_weights.pkl'
 TorchModel_path = 'pyt_model/pretrained_model/mnist_model.pth'
 
 
-
 def preprocess_image_for_model(input_image):
     """
     Preprocesses an input image for a deep learning model.
@@ -48,7 +47,6 @@ def preprocess_image_for_model(input_image):
     return reshaped_image
 
 
-
 def load_model_from_model_id(n=2):
     """
     Load a deep learning model based on a command-line argument.
@@ -66,18 +64,18 @@ def load_model_from_model_id(n=2):
     Example:
         loaded_model = load_model_from_command_line_argument(1)
     """
-    if n==1:
+    if n == 1:
         try:
             print("\nusing NumpyModel\n")
             return NumpyModel(NumpyModel_path)
         except:
             print(f"Error: Model file '{NumpyModel_path}' not found.")
     elif n == 2:
-            try:
-                print("\nusing TFmodel\n")
-                return models.load_model(TFmodel_path)
-            except FileNotFoundError:
-                print(f"Error: Model file '{TFmodel_path}' not found.")
+        try:
+            print("\nusing TFmodel\n")
+            return models.load_model(TFmodel_path)
+        except FileNotFoundError:
+            print(f"Error: Model file '{TFmodel_path}' not found.")
     elif n == 3:
         try:
             model = TorchModel()

@@ -5,6 +5,7 @@ import pygame
 import sys
 from utils import *
 
+
 def load_model_from_command_line_argument():
     """
     Load a deep learning model based on a command-line argument.
@@ -28,15 +29,18 @@ def load_model_from_command_line_argument():
             return load_model_from_model_id(3)
     else:
         print("No command-line argument provided. Using default model.")
-    
+
     # Fallback to default model if no valid argument is provided
     return load_model_from_model_id(2)
+
 
 drawing = False  # true if mouse is pressed
 pt1_x, pt1_y = None, None
 pygame.init()
 
 # mouse callback function
+
+
 def line_drawing(event, x, y, flags, param):
     """
     Mouse event handler for drawing on an image canvas and making digit predictions.

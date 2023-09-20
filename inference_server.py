@@ -16,12 +16,12 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 ocr_model = load_model_from_model_id()
 
+
 @app.route('/api/changemodel/<model_id>', methods=['POST'])
 def change_model(model_id):
     global ocr_model
     ocr_model = load_model_from_model_id(int(model_id))
     return jsonify({'message': 'Model updated successfully'})
-
 
 
 @app.route('/api/upload', methods=['POST'])
@@ -60,6 +60,7 @@ def upload_image():
 
     except Exception as e:
         return jsonify({'error': str(e)})
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3001, debug=True)
