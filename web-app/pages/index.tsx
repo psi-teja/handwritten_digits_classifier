@@ -54,7 +54,7 @@ export default function Home() {
     canvas.addEventListener("mousemove", draw);
     canvas.addEventListener("mouseup", () => (isDrawing = false));
     canvas.addEventListener("mouseout", () => (isDrawing = false));
-  }, []);
+  }, [canvasRef]);
 
   const changeModel = (id: SetStateAction<number>) => {
     // Send a POST request to your Flask backend to change the model
@@ -74,6 +74,7 @@ export default function Home() {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
     context.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+    setDigit("?");
   };
 
   const handleSubmitClick = () => {

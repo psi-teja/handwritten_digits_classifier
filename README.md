@@ -1,6 +1,6 @@
 # Handwritten Digits Classifier
 
-<img src="3.jpg" width="30%" align="right" title="Handwritten Digit 3">
+<img src="3.jpg" width="30%" align="right" title="Handwritten Digit 3" style="border-radius: 10px;">
 
 This project offers three different approaches to classify handwritten digits:
 
@@ -24,7 +24,11 @@ There are 2 ways of using this application:
   2.  cd web-app
   3.  Run `npm run dev`
 
-- From terminal:
+<p align="center">
+  <img src="display.gif" alt="Working" style="border-radius: 10px;">
+</p>
+
+From terminal:
 
   1.  Run `draw_digit.py` with the chosen model:
 
