@@ -25,7 +25,7 @@ There are 2 ways of using this application:
   3.  Run `npm run dev`
 
 <p align="center">
-  <img src="display.gif" alt="Working" style="border-radius: 10px;">
+  <img src="display.gif" alt="Working" style="border: 2px solid #333; border-radius: 10px;">
 </p>
 
 From terminal:
