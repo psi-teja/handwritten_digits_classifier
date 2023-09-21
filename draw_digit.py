@@ -69,7 +69,7 @@ def line_drawing(event, x, y, flags, param):
     elif event == cv2.EVENT_LBUTTONUP:
         drawing = False
         cv2.line(img, (pt1_x, pt1_y), (x, y), color=0, thickness=25)
-        input = preprocess_image_for_model(img)
+        input = preprocess_image_for_inference(img)
         digit = ocr_model.predict(input)
         filename = f'soundtrack/{str(digit.argmax())}.wav'
         pygame.mixer.music.load(filename)

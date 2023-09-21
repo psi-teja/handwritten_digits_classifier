@@ -3,7 +3,7 @@ from flask_cors import CORS
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from draw_digit import pygame, load_model_from_model_id, preprocess_image_for_model
+from draw_digit import pygame, load_model_from_model_id, preprocess_image_for_inference
 
 app = Flask(__name__)
 
@@ -46,7 +46,7 @@ def upload_image():
         image_path = os.path.join(app.config['UPLOAD_FOLDER'], 'image.png')
         plt.imsave(image_path, grayscale_image, cmap='gray')
 
-        img = preprocess_image_for_model(grayscale_image)
+        img = preprocess_image_for_inference(grayscale_image)
 
         digits = ocr_model.predict(img)
 

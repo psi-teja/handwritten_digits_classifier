@@ -12,7 +12,7 @@ NumpyModel_path = 'np_model/weights/model_weights.pkl'
 TorchModel_path = 'pyt_model/pretrained_model/mnist_model.pth'
 
 
-def preprocess_image_for_model(input_image):
+def preprocess_image_for_inference(input_image):
     """
     Preprocesses an input image for a deep learning model.
 
@@ -87,3 +87,5 @@ def load_model_from_model_id(n=2):
             print(f"Error: Model file '{TorchModel_path}' not found.")
     else:
         print("No command-line argument provided. Using default model.")
+
+
