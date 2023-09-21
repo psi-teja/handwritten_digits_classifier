@@ -8,6 +8,8 @@ This project offers three different approaches to classify handwritten digits:
 - **Using TensorFlow**: A Convolutional Neural Network (CNN) architecture is employed for classification.
 - **Using PyTorch**: PyTorch will be used with a CNN architecture.
 
+Disclaimer: Accuracy of MLPs model built using numpy is not up to the mark. I am working on it.
+
 ## Requirements
 
 - Install all python packages by running `pip install -r requirements.txt`
