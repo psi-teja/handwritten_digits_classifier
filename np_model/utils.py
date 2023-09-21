@@ -13,8 +13,9 @@ def softmax(x):
 
 
 def preprocess_data_for_training(X_train, y_train):
-    """preprocess_data_for_training convert white pixels to black pixels and vise-versa
-    
+    """preprocess_data_for_training 
+    convert white pixels to black pixels and vise-versa
+    and creates one hot encoded labels
 
     Args:
         X_train (array): images data
