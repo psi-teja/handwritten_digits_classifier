@@ -1,10 +1,10 @@
 import numpy as np
 
-def sigmoid(x):
-    return 1 / (1 + np.exp(-x))
+def relu(x):
+    return (x>0)*x
 
-def d_sigmoid(x):
-    return x * (1 - x)
+def d_relu(x):
+    return (x>0)*1
 
 def softmax(x):
     exp_x = np.exp(x - np.max(x, axis=1, keepdims=True))
@@ -35,3 +35,14 @@ def preprocess_data_for_training(X_train, y_train):
     X_train = X_train.reshape((X_train.shape[0], -1))
 
     return X_train, Y_train
+
+
+def batch_normalize(X, epsilon=1e-5):
+    # Calculate the mean and variance along the batch axis
+    mean = np.mean(X, axis=0)
+    variance = np.var(X, axis=0)
+    
+    # Normalize the input data
+    X_normalized = (X - mean) / np.sqrt(variance + epsilon)
+    
+    return X_normalized

@@ -37,10 +37,11 @@ class NumpyModel:
         """
         X = X.reshape((1, 784))
         h1 = np.dot(X, self.w1) + self.b1
-        h1 = 1 / (1 + np.exp(-h1))
+        h1 = (h1>0)*h1
         h2 = np.dot(h1, self.w2) + self.b2
-        h2 = 1 / (1 + np.exp(-h2))
+        h2 = (h2>0)*h2
         output = np.dot(h2, self.wo) + self.bo
+        output = (output>0)*output
         softmax_output = np.exp(output) / np.sum(np.exp(output), axis=1, keepdims=True)
 
         return softmax_output
