@@ -22,10 +22,13 @@ def load_model_from_command_line_argument():
     if len(sys.argv) > 1:
         argument = sys.argv[1].lower()
         if argument == "np":
+            print("\nusing NumpyModel\n")
             return load_model_from_model_id(1)
         elif argument == "tf":
+            print("\nusing TFmodel\n")
             return load_model_from_model_id(2)
         elif argument == "pyt":
+            print("\nusing TorchModel\n")
             return load_model_from_model_id(3)
     else:
         print("No command-line argument provided. Using default model.")

@@ -5,11 +5,15 @@ from np_model.model import NumpyModel
 from tf_model.model import models
 from pyt_model.model import TorchModel
 from PIL import Image
+import os
 
 # Default model path
-TFmodel_path = 'tf_model/pretrained_model'
-NumpyModel_path = 'np_model/weights/model_weights.pkl'
-TorchModel_path = 'pyt_model/pretrained_model/mnist_model.pth'
+current_dir = os.path.dirname(__file__)
+
+
+TFmodel_path = os.path.join(current_dir,'tf_model/pretrained_model')
+NumpyModel_path = os.path.join(current_dir,'np_model/weights/model_weights.pkl')
+TorchModel_path = os.path.join(current_dir,'pyt_model/pretrained_model/mnist_model.pth')
 
 
 def preprocess_image_for_inference(input_image):
@@ -69,13 +73,13 @@ def load_model_from_model_id(n=2):
             print("\nusing NumpyModel\n")
             return NumpyModel(NumpyModel_path)
         except:
-            print(f"Error: Model file '{NumpyModel_path}' not found.")
+            raise FileNotFoundError(f"Model file '{NumpyModel_path}' not found.")
     elif n == 2:
         try:
             print("\nusing TFmodel\n")
             return models.load_model(TFmodel_path)
         except FileNotFoundError:
-            print(f"Error: Model file '{TFmodel_path}' not found.")
+            raise FileNotFoundError(f"Model file '{TFmodel_path}' not found.")
     elif n == 3:
         try:
             model = TorchModel()
@@ -84,7 +88,7 @@ def load_model_from_model_id(n=2):
             print("\nusing TorchModel\n")
             return model
         except FileNotFoundError:
-            print(f"Error: Model file '{TorchModel_path}' not found.")
+            raise FileNotFoundError(f"Model file '{TorchModel_path}' not found.")
     else:
         print("No command-line argument provided. Using default model.")
 
